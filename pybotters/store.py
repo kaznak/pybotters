@@ -158,13 +158,9 @@ class DataStoreInterface:
 
     def _onmessage(self, msg: Any, ws: ClientWebSocketResponse) -> None:
         print(msg)
-        self._set()
 
-    async def onmessage(self, msg: Any, ws: ClientWebSocketResponse) -> None:
-        if self._iscorofunc:
-            await self._onmessage(msg, ws)
-        else:
-            self._onmessage(msg, ws)
+    def onmessage(self, msg: Any, ws: ClientWebSocketResponse) -> None:
+        self._onmessage(msg, ws)
         self._set()
 
     def _set(self) -> None:
