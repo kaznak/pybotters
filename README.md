@@ -1,6 +1,6 @@
 [![pytest](https://github.com/MtkN1/pybotters/actions/workflows/pytest.yml/badge.svg)](https://github.com/MtkN1/pybotters/actions/workflows/pytest.yml)
 
-# [BETA] pybotters
+# [Preview] pybotters
 
 An advanced api client for python botters.
 
@@ -12,7 +12,7 @@ An advanced api client for python botters.
 
 ## 👩‍💻👨‍💻 In development
 
-`pybotters` は現在 ** **BETAバージョン** ** です。
+`pybotters` は現在 ** **Previewバージョン** ** です。
 一部機能は開発中です。
 
 開発状況については [こちら(Issues)](https://github.com/MtkN1/pybotters/issues) を参照してください。
@@ -38,12 +38,13 @@ An advanced api client for python botters.
 | Bybit | ✅ | ✅ | [Official](https://bybit-exchange.github.io/docs/inverse) |
 | Binance | ✅ | ✅(USDⓈ-M) | [Official](https://binance-docs.github.io/apidocs/spot/en/) |
 | FTX | ✅ | ✅ | [Official](https://docs.ftx.com/) |
-| BitMEX | ✅ | ✅ | [Official](https://www.bitmex.com/app/apiOverview) |
 | Phemex | ✅ | WIP | [Official](https://github.com/phemex/phemex-api-docs) |
+| BitMEX | ✅ | ✅ | [Official](https://www.bitmex.com/app/apiOverview) |
 | bitFlyer | ✅ | WIP | [Official](https://lightning.bitflyer.com/docs) |
-| GMO Coin | ✅ | WIP | [Official](https://api.coin.z.com/docs/) |
+| GMO Coin | ✅ | ✅ | [Official](https://api.coin.z.com/docs/) |
 | Liquid | ✅ | WIP | [Official](https://document.liquid.com/) |
 | bitbank | ✅ | ✅ | [Official](https://docs.bitbank.cc/) |
+| Coincheck | ✅ | WIP | [Official](https://coincheck.com/documents/exchange/api) |
 
 ## 🐍 Requires
 
@@ -74,13 +75,12 @@ async def main():
         data = await resp.json()
         print(data)
 
-        # WebSocket API (with print handler)
+        # WebSocket API (with defautl print handler)
         ws = await client.ws_connect(
             url='wss://stream.bybit.com/realtime',
             send_json={'op': 'subscribe', 'args': ['trade.BTCUSD', 'order', 'position']},
-            hdlr_json=lambda msg, ws: print(msg),
         )
-        await ws # this await is wait forever (for usage)
+        await ws # Ctrl+C to break
 
 try:
     asyncio.run(main())
@@ -107,6 +107,8 @@ async def main():
 ## 📖 Wiki
 
 詳しい利用方法は👉[Wikiページへ](https://github.com/MtkN1/pybotters/wiki)
+
+現在こちらにに移行中です👉[Read the Docs](https://pybotters.readthedocs.io/ja/latest/)
 
 ## 🗽 License
 
